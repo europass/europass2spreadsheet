@@ -1,5 +1,6 @@
 {
     "apps" : [{
+      "name"      : "epas2excel",
       "script"    : "app.js",
       "instances" : "max",
       "exec_mode" : "cluster" 
