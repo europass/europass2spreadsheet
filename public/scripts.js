@@ -1,4 +1,52 @@
 $(document).ready(function () {
+    
+    function escapeHtml(string) {
+        var str = '' + string;
+        var match = /["'&<>]/.exec(str);
+
+        if (!match) {
+          return str;
+        }
+
+        var escape;
+        var html = '';
+        var index = 0;
+        var lastIndex = 0;
+
+        for (index = match.index; index < str.length; index++) {
+            switch (str.charCodeAt(index)) {    
+                case 34: // "
+                  escape = '&quot;';
+                  break;
+                case 38: // &
+                  escape = '&amp;';
+                  break;
+                case 39: // '
+                  escape = '&#39;';
+                  break;
+                case 60: // <
+                  escape = '&lt;';
+                  break;
+                case 62: // >
+                  escape = '&gt;';
+                  break;
+                default:
+                  continue;
+            }
+
+            if (lastIndex !== index) {
+                html += str.substring(lastIndex, index);
+            }
+
+            lastIndex = index + 1;
+            html += escape;
+        }
+
+        return lastIndex !== index
+            ? html + str.substring(lastIndex, index)
+            : html;
+    }
+
     var filesArray = [];
 
     function post2Europass() {
@@ -80,11 +128,11 @@ $(document).ready(function () {
                     var errorDescription = xmlDoc.getElementsByTagName("message")[0].innerHTML;
                     $("#errors_container")[0].innerHTML =
                         "<p>Error on File :" +
-                        error.file +
+                        escapeHtml(error.file) +
                         "</p><p>" +
-                        errorCode +
+                        escapeHtml(errorCode) +
                         "</p><p>" +
-                        errorDescription +
+                        escapeHtml(errorDescription) +
                         "</p>";
                 } catch {
                     $("#errors_container")[0].innerText =
@@ -140,17 +188,17 @@ $(document).ready(function () {
             if (file.type === "application/pdf" || file.type === "text/xml") {
                 $(
                     "<div class='file__value'><div class='file__value--text'>" +
-                    file.name +
+                    escapeHtml(file.name) +
                     "</div><div class='file__value--remove' data-id='" +
-                    file.name +
+                    escapeHtml(file.name) +
                     "' ></div></div>"
                 ).insertAfter("#file__input");
             } else {
                 $(
                     "<div class='file__value'><div class='file__value--text error'>" +
-                    file.name +
+                    escapeHtml(file.name) +
                     "</div><div class='file__value--remove' data-id='" +
-                    file.name +
+                    escapeHtml(file.name) +
                     "' ><span class='tooltiptext'>This is not a Europass Document and It will be ignored</span></div></div>"
                 ).insertAfter("#file__input");
             }
