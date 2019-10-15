@@ -1,11 +1,16 @@
-const emailNotifier = require("./services/email-notifier");
 var express = require("express");
 var bodyParser = require("body-parser");
 var helmet = require("helmet");
 var path = require("path");
 require('dotenv').config();
 
-//emailNotifier.init();
+/*
+ * #EPAS-1580 To use the email functionality uncomment the following code
+ * and add "mail-notifier": "0.5.0" dependency in package.json
+ * 
+ * const emailNotifier = require("./services/email-notifier"); 
+ * emailNotifier.init();
+ */
 
 var app = express();
 var port = process.env.PORT || 5201;
