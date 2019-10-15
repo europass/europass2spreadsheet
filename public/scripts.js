@@ -1,5 +1,32 @@
 $(document).ready(function () {
     
+    // Matomo
+    if (location.hostname === "europass.cedefop.europa.eu" || location.hostname === "staging.europass.eworx.gr") {
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u= (location.hostname === "europass.cedefop.europa.eu") ? "//webstats.europass.cedefop.europa.eu/" : "//staging.webstats.europass.eworx.gr/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '5']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+    }
+
+    // Europa Analytics
+    if (location.hostname === "europass.cedefop.europa.eu") {
+        $('<script>')
+            .attr('type', 'text/javascript')
+            .attr('src', '//europa.eu/webtools/load.js')
+            .appendTo('body');
+        
+        $('<script>')
+            .attr('type', 'application/json')
+            .text('{"utility":"piwik", "siteID":"163", "sitePath":["europass.cedefop.europa.eu"], "instance":"europa.eu"}')
+            .appendTo('body');
+    }
+
     function escapeHtml(string) {
         var str = '' + string;
         var match = /["'&<>]/.exec(str);
