@@ -170,7 +170,7 @@ $(document).ready(function () {
                         "</p><p>" +
                         escapeHtml(errorDescription) +
                         "</p>";
-                } catch {
+                } catch(err) {
                     $("#errors_container")[0].innerText =
                         "An error occured please try again later";
                     setTimeout(function () {
