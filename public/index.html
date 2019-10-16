@@ -1,104 +1,107 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8" />
-    <title>EPAS2EXCEL</title>
-    <link rel="stylesheet" href="./styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>EPAS2EXCEL</title>
+        <link rel="stylesheet" href="./styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
 
-<body>
-<div class="container">
-    <div class="title">
-        <div class="logo">
-            <img src="./europass-logo.svg" alt="Europass">
-        </div>
-        <!--<h1>Insert Europass PDF/xml documents into Spreadsheet </h1>-->
-    </div>
-    <div class="content">
-
-        <div class="wrap">
-            <h1>Insert Europass PDF/xml documents into Spreadsheet</h1>
-            <div class="wrap-inner">
-                <form action="#" name="form" method="get">
-                    <div class="file">
-                        <div class="file__input" id="file__input">
-                            <input class="file__input--file" id="customFile" type="file" multiple="multiple" name="files" />
-                            <label class="file__input--label" for="customFile" data-text-btn="+">Add file</label>
-                        </div>
-                    </div>
-                </form>
+    <body>
+        <div class="container">
+            <div class="title">
+                <div class="logo">
+                    <img src="./europass-logo.svg" alt="Europass">
+                </div>
+                <!--<h1>Insert Europass PDF/xml documents into Spreadsheet </h1>-->
             </div>
-            <button class="privacy-button">
-                Privacy notice
-            </button>
+            <div class="content">
+
+                <div class="wrap">
+                    <h1>Insert Europass PDF/xml documents into Spreadsheet</h1>
+                    <div class="wrap-inner">
+                        <form action="#" name="form" method="get">
+                            <div class="file">
+                                <div class="file__input" id="file__input">
+                                    <input class="file__input--file" id="customFile" type="file" multiple="multiple" name="files" />
+                                    <label class="file__input--label" for="customFile" data-text-btn="+">Add file</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <button class="privacy-button">
+                        Privacy notice
+                    </button>
+                </div>
+            </div>
+
+            <div class="submit-button">
+                <button disabled class="submit material-button">Send</button>
+            </div>
+            <div id='errors_container'></div>
         </div>
-    </div>
 
-    <div class="submit-button">
-        <button disabled class="submit material-button">Send</button>
-    </div>
-    <div id='errors_container'></div>
-</div>
+        <div class="modal">
+            <p>
+                Europass servers do not keep record of CVs, Language Passports, European Skills
+                Passports or any other files uploaded by the users. The files are processed by
+                the Europass servers and immediately deleted.
+            </p>
+            <p>
+                All processing carried out by the Europass e-service meets the requirements
+                of Regulation (EU) 2018/1725 of the European Parliament and of the Council
+                of 23 October 2018 on the protection of natural persons with regard to the
+                processing of personal data by the Union institutions, bodies, offices and
+                agencies and on the free movement of such data, and repealing Regulation (EC)
+                No 45/2001 and Decision No 1247/2002/EC.
+            </p>
+            <span class="modal-close">×</span>
+        </div>
 
-
-
-<div class="modal">
-    <p>
-        Europass servers do not keep record of CVs, Language Passports, European Skills
-        Passports or any other files uploaded by the users. The files are processed by
-        the Europass servers and immediately deleted.
-    </p>
-    <p>
-        All processing carried out by the Europass e-service meets the requirements
-        of Regulation (EU) 2018/1725 of the European Parliament and of the Council
-        of 23 October 2018 on the protection of natural persons with regard to the
-        processing of personal data by the Union institutions, bodies, offices and
-        agencies and on the free movement of such data, and repealing Regulation (EC)
-        No 45/2001 and Decision No 1247/2002/EC.
-    </p>
-    <span class="modal-close">×</span>
-</div>
-<script src="./jquery.js"></script>
-<script src="./scripts.js"></script>
-<script>
-    // Matomo (staging)
-    if (location.hostname === "staging.europass.eworx.gr") {
-        var _paq = _paq || [];
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-            var u = "//staging.webstats.europass.eworx.gr/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', '5']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
-    }
-
-    // Europa Analytics + Matomo (production)
-    if (location.hostname === "europass.cedefop.europa.eu") {
-        $('<script>')
-            .attr('type', 'text/javascript')
-        .attr('src', '//europa.eu/webtools/load.js')
-            .appendTo('body');
-
-        $('<script>')
-            .attr('type', 'application/json')
-            .text('{"utility":"piwik", "siteID":"163", "sitePath":["europass.cedefop.europa.eu"], "instance":"europa.eu"}')
-            .appendTo('body');
-
-        var waitEuropaAnalytics = setInterval(initEuropassAnalytics, 100);
-        function initEuropassAnalytics() {
-            if(window._paq) {
-                var u= "//webstats.europass.cedefop.europa.eu/";
-                _paq.push(['addTracker', piwikUrl = u+'piwik.php', '5']);
-                clearInterval(waitEuropaAnalytics)
+        <script src="./jquery.js"></script>
+        <script src="./scripts.js"></script>
+        <script>
+            // Matomo (staging)
+            if (location.hostname === "staging.europass.eworx.gr") {
+                var _paq = _paq || [];
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                (function () {
+                    var u = "//staging.webstats.europass.eworx.gr/";
+                    _paq.push(['setTrackerUrl', u + 'piwik.php']);
+                    _paq.push(['setSiteId', '5']);
+                    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                    g.type = 'text/javascript';
+                    g.async = true;
+                    g.defer = true;
+                    g.src = u + 'piwik.js';
+                    s.parentNode.insertBefore(g, s);
+                })();
             }
-        }
-    }
-</script>
-</body>
+
+            // Europa Analytics + Matomo (production)
+            if (location.hostname === "europass.cedefop.europa.eu") {
+                $('<script>')
+                        .attr('type', 'text/javascript')
+                        .attr('src', '//europa.eu/webtools/load.js')
+                        .appendTo('body');
+
+                $('<script>')
+                        .attr('type', 'application/json')
+                        .text('{"utility":"piwik", "siteID":"163", "sitePath":["europass.cedefop.europa.eu"], "instance":"europa.eu"}')
+                        .appendTo('body');
+
+                var waitEuropaAnalytics = setInterval(initEuropassAnalytics, 100);
+                function initEuropassAnalytics() {
+                    if (window._paq) {
+                        var u = "//webstats.europass.cedefop.europa.eu/";
+                        _paq.push(['addTracker', piwikUrl = u + 'piwik.php', '5']);
+                        clearInterval(waitEuropaAnalytics)
+                    }
+                }
+            }
+        </script>
+    </body>
 
 </html>
