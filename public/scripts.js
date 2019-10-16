@@ -231,7 +231,7 @@ $(document).ready(function () {
     var taint, d, x, y;
     $(".material-button").click(function (e) {
         if (window._paq) {
-            _paq.push(["trackEvent", 'Convert CV', 'XLSX']);
+            _paq.push(["trackEvent", 'Convert', 'click', 'Convert CV to xlsx']);
         }
         $(this)[0].innerText = "Processing...";
         if ($(this).find(".taint").length == 0) {
