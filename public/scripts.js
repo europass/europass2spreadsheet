@@ -266,6 +266,9 @@ $(document).ready(function () {
     // ------------ File upload END ------------
     var taint, d, x, y;
     $(".material-button").click(function (e) {
+        if (window._paq) {
+            _paq.push(["trackEvent", 'Convert CV', 'XLSX']);
+        }
         $(this)[0].innerText = "Processing...";
         if ($(this).find(".taint").length == 0) {
             $(this).prepend("<span class='taint'></span>");
