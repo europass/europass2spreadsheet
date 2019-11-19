@@ -2,7 +2,7 @@
 
 Europass to Spreadsheet is an online app that generates Excel from Europass CVs available for downloading after the conversion takes place.
 
-##How does it work
+## How does it work
 Go to https://europass.cedefop.europa.eu/europass2spreadsheet/ and add Europass CVs into the form. Once you have added the Europass CVs you can send them into our servers to convert them into an Excel Spreadsheet presenting you all the info that CVs contains in a comparable way.
 
 ## Instructions
