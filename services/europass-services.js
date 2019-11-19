@@ -18,7 +18,7 @@ function xmlExtraction(fileName, pdfArrayBuffer) {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           var xml = xhr.responseText;
-          xml2EuropassJSON(xml)
+          xml2EuropassJSON(fileName, xml)
             .then(data => resolve(data))
             .catch(error => {
               reject(new Error(error));
@@ -35,9 +35,7 @@ function xmlExtraction(fileName, pdfArrayBuffer) {
 // API Endpoint for converting EUROPASS XML to JSON.
 const XML_TO_JSON_URL = process.env.XML_TO_JSON_URL;
 
-function xml2EuropassJSON(xml) {}
-
-function xml2EuropassJSON(xmlArrayResult) {
+function xml2EuropassJSON(fileName, xmlArrayResult) {
   return new Promise(function(resolve, reject) {
     const xhrXmlToJson = new XMLHttpRequest();
     xhrXmlToJson.open("POST", XML_TO_JSON_URL, true);
@@ -50,7 +48,7 @@ function xml2EuropassJSON(xmlArrayResult) {
         resolve(europassJSON);
       } else if (xhrXmlToJson.status >= 400) {
         xhrXmlToJson.onreadystatechange = null;
-        reject(xhrXmlToJson);
+        reject({file: fileName, type: xhrXmlToJson.responseText});
       }
     };
     xhrXmlToJson.send(xmlArrayResult);
