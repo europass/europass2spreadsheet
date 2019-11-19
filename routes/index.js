@@ -10,7 +10,7 @@ router.get("/api", function(req, res) {
   res.send("Welcome to epas2excel Service");
 });
 
-router.post("/api/download", upload.array("files"), function(req, res) {    
+router.post("/api/download", upload.array("files"), function(req, res) {
   if (!req.files) {
     return res.json("No files were uploaded.");
   }
@@ -22,7 +22,7 @@ router.post("/api/download", upload.array("files"), function(req, res) {
     if (file.mimetype === "application/pdf") {
       promises.push(europassServices.xmlExtraction(file.originalname, file.buffer));
     } else {
-      promises.push(europassServices.xml2EuropassJSON(file.originalname, file.buffer));
+      promises.push(europassServices.xml2EuropassJSON(file.buffer));
     }
   }
 
@@ -33,12 +33,12 @@ router.post("/api/download", upload.array("files"), function(req, res) {
         files.push(europass.SkillsPassport.LearnerInfo);
       }
 
-      const file = excel.create(fileNames, files);      
+      const file = excel.create(fileNames, files);
       file.write("Epas2Spreadsheet.xlsx", res);
 
     })
-    .catch(error => {      
-      res.status(404).send(error);      
+    .catch(error => {
+      res.status(404).send(error);
     });
 });
 
