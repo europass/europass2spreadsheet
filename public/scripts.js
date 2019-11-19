@@ -120,7 +120,7 @@ $(document).ready(function () {
             } else {
                 try {
                     var error = JSON.parse(
-                        String.fromCharCode.apply(null, new Uint8Array(request.response))
+                        new TextDecoder("utf-8").decode(new Uint8Array(request.response))
                     );
                     var parser = new DOMParser();
                     var xmlDoc = parser.parseFromString(error.type, "text/xml");
