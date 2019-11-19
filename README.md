@@ -46,11 +46,11 @@ If we want to allow PM2 to cluster into all cpu threads and load balancing the l
 pm2 start processes.json
 ```
 
-##Supported file types
+## Supported file types
 
 The supported types of documents are Europass PDF generated directly from Europass Online Editor. (https://europass.cedefop.europa.eu/editors/)
 
-##Data policy
+## Data policy
 
 Europass servers do not keep record of CVs, Language Passports, European Skills Passports or any other files uploaded by the users. The files are processed by the Europass servers and immediately deleted.
 All processing carried out by the Europass e-service meets the requirements of Regulation (EU) 2018/1725 of the European Parliament and of the Council of 23 October 2018 on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC.
