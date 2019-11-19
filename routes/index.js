@@ -22,7 +22,7 @@ router.post("/api/download", upload.array("files"), function(req, res) {
     if (file.mimetype === "application/pdf") {
       promises.push(europassServices.xmlExtraction(file.originalname, file.buffer));
     } else {
-      promises.push(europassServices.xml2EuropassJSON(file.buffer));
+      promises.push(europassServices.xml2EuropassJSON(file.originalname, file.buffer));
     }
   }
 
