@@ -117,10 +117,10 @@ $(document).ready(function () {
             } else {
                 try {
                     var error = JSON.parse(
-                        new TextDecoder("utf-8").decode(new Uint8Array(request.response))
+                        new TextDecoderLite("utf-8").decode(new Uint8Array(request.response))
                     );
                     var parser = new DOMParser();
-                    var xmlDoc = parser.parseFromString(error.type, "text/xml");
+                    var xmlDoc = parser.parseFromString(error.type, "text/html");
                     var errorCode = xmlDoc.getElementsByTagName("trace")[0].innerHTML;
                     var errorDescription = xmlDoc.getElementsByTagName("message")[0].innerHTML;
                     $("#errors_container")[0].innerHTML =
