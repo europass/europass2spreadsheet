@@ -150,7 +150,7 @@ $(document).ready(function () {
     }
 
     let dropArea = document.body;
-    ["dragenter", "dragover", "dragleave", "drop"].forEach(eventName => {
+    ["dragenter", "dragover", "dragleave", "drop"].forEach(function(eventName) {
         dropArea.addEventListener(eventName, preventDefaults, false);
     });
 
@@ -159,11 +159,11 @@ $(document).ready(function () {
         e.stopPropagation();
     }
 
-    ["dragenter", "dragover"].forEach(eventName => {
+    ["dragenter", "dragover"].forEach(function(eventName) {
         dropArea.addEventListener(eventName, highlight, false);
     });
 
-    ["dragleave", "drop"].forEach(eventName => {
+    ["dragleave", "drop"].forEach(function(eventName) {
         dropArea.addEventListener(eventName, unhighlight, false);
     });
 
@@ -254,17 +254,17 @@ $(document).ready(function () {
 
 /*ck modal addition*/
 
-window.onload = () => {
+window.onload = function() {
 
     let privacyButton = document.querySelector(".privacy-button");
     let modal = document.querySelector(".modal");
     let closeModal = document.querySelector(".modal-close");
 
-    privacyButton.addEventListener("click", () => {
+    privacyButton.addEventListener("click", function() {
         modal.classList.toggle("is-active");
     });
 
-    closeModal.addEventListener("click", () => {
+    closeModal.addEventListener("click", function() {
         modal.classList.toggle("is-active");
     });
 };
