@@ -1,3 +1,17 @@
+// Matomo
+if (location.hostname === "europass.cedefop.europa.eu" || location.hostname === "staging.europass.eworx.gr") {
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u= (location.hostname === "europass.cedefop.europa.eu") ? "//webstats.europass.cedefop.europa.eu/" : "//staging.webstats.europass.eworx.gr/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '5']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+}
+
 $(document).ready(function () {
 
     function escapeHtml(string) {
