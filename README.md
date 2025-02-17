@@ -1,3 +1,5 @@
+NOTE: Europass as developed by Cedefop is no longer maintained after June 2020. Please visit https://europass.eu
+
 # Epas2Spreadsheet
 
 Europass to Spreadsheet is an online app that generates Excel from Europass CVs available for downloading after the conversion takes place.
