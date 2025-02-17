@@ -1,4 +1,6 @@
-NOTE: Europass as developed by Cedefop is no longer maintained after June 2020. Please visit https://europass.eu
+```
+**NOTE: Europass as developed by Cedefop is no longer maintained after June 2020. Please visit https://europass.eu**
+```
 
 # Epas2Spreadsheet
 
